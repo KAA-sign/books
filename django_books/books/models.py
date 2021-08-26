@@ -104,7 +104,7 @@ class Rating(models.Model):
 
     ip = models.CharField("IP адрес", max_length=15)
     star = models.ForeignKey(RatingStar, verbose_name='звезда', on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, verbose_name="книга", on_delete=models.CharField)
+    book = models.ForeignKey(Book, verbose_name="книга", on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.star} - {self.book}'
