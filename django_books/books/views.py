@@ -1,3 +1,13 @@
 from django.shortcuts import render
+from django.views.generic.base import View
 
-# Create your views here.
+
+from .models import Book
+
+
+
+class BookView(View):
+    '''Спссок книг'''
+    def get(self, request):
+        books = Book.objects.all()
+        return render(request, 'books/book_list.html', {'book_list': books})
