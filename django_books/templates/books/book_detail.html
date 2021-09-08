@@ -332,7 +332,7 @@
                 <div class="left-ads-display col-lg-8">
                     <div class="row">
                         <div class="desc1-left col-md-6">
-                            <img src="{{ book.poster.url }}" class="img-fluid" alt="">
+                            <img src="{{ book.cover.url }}" class="img-fluid" alt="">
                         </div>
                         <div class="desc1-right col-md-6 pl-lg-4">
                             <h3 class="editContent" style="outline: none; cursor: inherit;">
@@ -352,14 +352,14 @@
                                     </span>
                                 </li>
                                 <li style="list-style: none"><span><b>Жанр:</b>
-                                    {% for genre in book.genres.all %}
-                                        {{ genre.name }}
+                                    {% for genres in book.genres.all %}
+                                        {{ genres.name }}
                                     {% endfor %}
                                     </span>
                                 </li>
 
                                 <li style="list-style: none">
-                                    <span><b>Количество страниц:</b> ${{ book.number_of_pages }}</span></li>
+                                    <span><b>Количество страниц:</b> {{ book.number_of_pages }}</span></li>
                                
                                 <li style="list-style: none">
                                     <a href="#"><b>Рейтинг:</b>
