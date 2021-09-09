@@ -352,8 +352,8 @@
                                     </span>
                                 </li>
                                 <li style="list-style: none"><span><b>Жанр:</b>
-                                    {% for genres in book.genres.all %}
-                                        {{ genres.name }}
+                                    {% for genre in book.genres.all %}
+                                        {{ genre.name }}
                                     {% endfor %}
                                     </span>
                                 </li>

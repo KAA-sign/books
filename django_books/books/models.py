@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Category(models.Model):
 
@@ -59,13 +60,18 @@ class Book(models.Model):
     cover = models.ImageField("Изображение", upload_to="books/")
     authors = models.ManyToManyField(Author, verbose_name="автор", related_name="book_author")
     number_of_pages = models.PositiveIntegerField("Количество страниц", default=0)
-    geners = models.ManyToManyField(Genre, verbose_name="жанры")
+    genres = models.ManyToManyField(Genre, verbose_name="жанры")
     сategory = models.ForeignKey(Category, verbose_name="категория", on_delete=models.SET_NULL, null=True)
     url = models.SlugField(max_length=160, unique=True)
+    draft = models.BooleanField("Черновик", default=False)
 
     class Meta:
         verbose_name = "Книга"
         verbose_name_plural = "Книги"
+
+    def get_absolute_url(self):
+        return reverse('book_detail', kwargs={"slug": self.url})
+
 
     def __str__(self):
         return self.title
